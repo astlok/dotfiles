@@ -5,18 +5,29 @@
 
 - clean: ['~']
 
+- create:
+  - ~/.config/nvim
+  - ~/.config/nvim/init.lua
+
 - link:
     # git
-  ~/.gitconfig: .gitconfig
+  ~/.gitconfig:
+    path: .gitconfig
+    force: true
 
     # Shell
-  ~/.zshrc: .zshrc
+  ~/.zshrc:
+    path: .zshrc
+    force: true
 
     # Neovim
-  ~/.config/nvim/init.lua: nvim/init.lua
+  ~/.config/nvim/init.lua:
+    path: nvim/init.lua
+    force: true
   ~/.config/nvim/lua/:
     path: nvim/lua/*
     glob: true
+    force: true
 
 
 - shell:
