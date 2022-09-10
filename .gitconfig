@@ -1,0 +1,16 @@
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  mr = !sh -c 'git fetch $1 merge-requests/$2/head:mr-$1-$2 && git checkout mr-$1-$2' -
+  poh = !git push --set-upstream origin $(git symbolic-ref --short HEAD)
+  dump = cat-file -p
+
+  gr = log --graph --full-history --date=short --color --date-order --pretty=tformat:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s%x20%x1b[33m(%an)%x1b[0m%x20%x1b[31m(%aD)"
+  corge = merge -s recursive -Xsubtree=core --no-ff
+[user]
+	name = Oleg Reutskiy
+	email = o.reutskiy@corp.mail.ru
