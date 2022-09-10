@@ -1,60 +1,60 @@
 - defaults:
     link:
-      relink: true
-      create: true
+        relink: true
+        create: true
 
 - clean: ['~']
 
 - create:
-  - ~/.config/nvim
-  - ~/.config/nvim/init.lua
+    - ~/.config/nvim
+    - ~/.config/nvim/init.lua
 
 - link:
     # git
-  ~/.gitconfig:
-    path: .gitconfig
-    force: true
+    ~/.gitconfig:
+        path: .gitconfig
+        force: true
 
     # Shell
-  ~/.zshrc:
-    path: .zshrc
-    force: true
+    ~/.zshrc:
+        path: .zshrc
+        force: true
 
     # Neovim
-  ~/.config/nvim/init.lua:
-    path: nvim/init.lua
-    force: true
-  ~/.config/nvim/lua/:
-    path: nvim/lua/*
-    glob: true
-    force: true
+    ~/.config/nvim/init.lua:
+        path: nvim/init.lua
+        force: true
+    ~/.config/nvim/lua/:
+        path: nvim/lua/*
+        glob: true
+        force: true
 
 
 - shell:
-  # go install
-  - sudo yum remove golang
-  - git clone https://github.com/udhos/update-golang && cd update-golang && sudo ./update-golang.sh
+    # go install
+    - sudo yum remove golang
+    - git clone https://github.com/udhos/update-golang && cd update-golang && sudo ./update-golang.sh
 
-  - sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-  - sudo yum install -y neovim python3-neovim
+    - sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    - sudo yum install -y neovim python3-neovim
 
-  # oh-my-zsh
-  - sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  - sudo chsh -s $(which zsh)
+    # oh-my-zsh
+    - sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    - sudo chsh -s $(which zsh)
 
     # zsh-syntax-highlighting plugin
-  - sudo cd /etc/yum.repos.d/
-  - sudo wget https://download.opensuse.org/repositories/shells:zsh-users:zsh-syntax-highlighting/CentOS_7/shells:zsh-users:zsh-syntax-highlighting.repo
-  - sudo yum install zsh-syntax-highlighting -y
+    - sudo cd /etc/yum.repos.d/
+    - sudo wget https://download.opensuse.org/repositories/shells:zsh-users:zsh-syntax-highlighting/CentOS_7/shells:zsh-users:zsh-syntax-highlighting.repo
+    - sudo yum install zsh-syntax-highlighting -y
 
     # packer
-  - git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    - git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
     # gotests
-  - go install github.com/cweill/gotests/...@latest
+    - go install github.com/cweill/gotests/...@latest
 
     # go mod tags
-  - go install github.com/fatih/gomodifytags@latest
+    - go install github.com/fatih/gomodifytags@latest
 
     # fzf
-  - git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && sudo ~/.fzf/install --all
+    - git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && sudo ~/.fzf/install --all
