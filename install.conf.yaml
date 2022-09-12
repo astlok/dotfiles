@@ -7,7 +7,6 @@
 
 - shell:
       # curl
-    - sudo yum remove curl
     - sudo yum install wget openssl-devel -y
     - wget https://curl.haxx.se/download/curl-7.85.0.tar.gz && gunzip -c curl-7.85.0.tar.gz | tar xvf - && cd curl-7.85.0 && ./configure --with-ssl && make && sudo make install
 
@@ -32,6 +31,9 @@
 
       # vivid (ls colors)
     - brew install vivid
+
+      # bear
+    - brew install bear
 
       # oh-my-zsh
     - sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended

@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/o.reutskiy/.oh-my-zsh"
+export ZSH="/home/centos/.oh-my-zsh"
 
 export LS_COLORS="$(vivid generate ayu)"
 
@@ -105,7 +105,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 #export PATH="/Users/o.reutskiy/Developer/dotfiles/bin:${PATH}"
-export PATH="/Users/o.reutskiy/.local/bin:${PATH}"
+export PATH="/home/centos/.local/bin:${PATH}"
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
