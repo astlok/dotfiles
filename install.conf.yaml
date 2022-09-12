@@ -5,6 +5,52 @@
 
 - clean: ['~']
 
+- shell:
+      # curl
+    - sudo yum remove curl
+    - sudo yum install wget openssl-devel -y
+    - wget https://curl.haxx.se/download/curl-7.85.0.tar.gz && gunzip -c curl-7.85.0.tar.gz | tar xvf - && cd curl-7.85.0 && ./configure --with-ssl && make && sudo make install
+
+      # homebrew
+    - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    - echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/centos/.bash_profile
+    - eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    - sudo yum groupinstall 'Development Tools'
+
+      # go install
+    - sudo yum remove golang -y
+    - brew install go
+
+      # Neovim
+    - brew install neovim
+
+      #zsh
+    - brew install zsh
+
+      #coreutils
+    - brew install coreutils
+
+      # vivid (ls colors)
+    - brew install vivid
+
+      # oh-my-zsh
+    - sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+      # zsh-syntax-highlighting plugin
+    - git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+      # packer
+    - git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+      # gotests
+    - go install github.com/cweill/gotests/...@latest
+
+      # go mod tags
+    - go install github.com/fatih/gomodifytags@latest
+
+      # fzf
+    - brew install fzf
+
 - create:
     - ~/.config/nvim
     - ~/.config/nvim/init.lua
@@ -29,34 +75,3 @@
         glob: true
         force: true
 
-
-- shell:
-    # go install
-    - sudo yum remove golang
-    - git clone https://github.com/udhos/update-golang && cd update-golang && sudo ./update-golang.sh
-
-    # neovim
-    - sudo yum -y install epel-release
-    - sudo curl -o /etc/yum.repos.d/dperson-neovim-epel-7.repo https://copr.fedorainfracloud.org/coprs/dperson/neovim/repo/epel-7/dperson-neovim-epel-7.repo
-    - sudo yum install -y neovim python3-neovim
-
-    # oh-my-zsh
-    - sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    - sudo chsh -s $(which zsh)
-
-    # zsh-syntax-highlighting plugin
-    - sudo cd /etc/yum.repos.d/
-    - sudo wget https://download.opensuse.org/repositories/shells:zsh-users:zsh-syntax-highlighting/CentOS_7/shells:zsh-users:zsh-syntax-highlighting.repo
-    - sudo yum install zsh-syntax-highlighting -y
-
-    # packer
-    - git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
-    # gotests
-    - go install github.com/cweill/gotests/...@latest
-
-    # go mod tags
-    - go install github.com/fatih/gomodifytags@latest
-
-    # fzf
-    - git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && sudo ~/.fzf/install --all
