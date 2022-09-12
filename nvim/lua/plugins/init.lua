@@ -150,7 +150,7 @@ return require('packer').startup(function(use)
     }
 
     -- session-manager
-
+    use 'natecraddock/sessions.nvim'
 
     --buffer
     use {
@@ -162,59 +162,59 @@ return require('packer').startup(function(use)
     }
 
 
-    -- buffer
+    --buffer
     -- use {
-        --     'akinsho/bufferline.nvim',
-        --     tag = "v2.*",
-        --     requires = 'kyazdani42/nvim-web-devicons',
+    --     'akinsho/bufferline.nvim',
+    --     tag = "v2.*",
+    --     requires = 'kyazdani42/nvim-web-devicons',
+    --     config = function()
+    --         require('plugins/bufferline')
+    --     end
+    -- }
+
+
+    use {"akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
+        require("toggleterm").setup()
+    end}
+
+    use 'nicwest/vim-http'
+
+    use {
+        "folke/todo-comments.nvim",
+        requires = "nvim-lua/plenary.nvim",
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function()
+            require("plugins/todo-comments")
+        end
+    }
+
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('plugins/gitsigns')
+        end
+    }
+
+    use {
+        'phaazon/hop.nvim',
+        branch = 'v2', -- optional but strongly recommended
+        config = function()
+            require("plugins/hop")
+        end
+    }
+
+    use {
+        'karb94/neoscroll.nvim',
+        config = function()
+            require("plugins/neoscroll")
+        end
+    }
+
+    use 'brooth/far.vim'
+
+    -- use {
+        --     'kazhala/close-buffers.nvim',
         --     config = function()
-            --         require('plugins/bufferline')
-            --     end
-            -- }
-
-            -- terminal
-            use {"akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
-                require("toggleterm").setup()
-            end}
-
-            use 'nicwest/vim-http'
-
-            use {
-                "folke/todo-comments.nvim",
-                requires = "nvim-lua/plenary.nvim",
-                requires = 'kyazdani42/nvim-web-devicons',
-                config = function()
-                    require("plugins/todo-comments")
-                end
-            }
-
-            use {
-                'lewis6991/gitsigns.nvim',
-                config = function()
-                    require('plugins/gitsigns')
-                end
-            }
-
-            use {
-                'phaazon/hop.nvim',
-                branch = 'v2', -- optional but strongly recommended
-                config = function()
-                    require("plugins/hop")
-                end
-            }
-
-            use {
-                'karb94/neoscroll.nvim',
-                config = function()
-                    require("plugins/neoscroll")
-                end
-            }
-
-            use 'brooth/far.vim'
-
-            -- use {
-            --     'kazhala/close-buffers.nvim',
-            --     config = function()
             --         require("plugins/close-buffers")
             --     end
             -- }
