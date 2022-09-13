@@ -55,6 +55,8 @@
       # fzf
     - brew install fzf
 
+    - brew install llvm curl
+
 - create:
     - ~/.config/nvim
     - ~/.config/nvim/init.lua
