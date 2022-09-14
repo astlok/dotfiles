@@ -3,6 +3,8 @@ local utils = require("exec.utils")
 function execCurl()
     local command = utils.getCurrentParagraph()
 
+    command = command .. ' | jq .'
+
     vim.cmd('set splitright | vnew | set filetype=sh | read !' .. command)
 
     -- local Terminal = require('toggleterm.terminal').Terminal
