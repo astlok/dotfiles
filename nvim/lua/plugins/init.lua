@@ -150,7 +150,12 @@ return require('packer').startup(function(use)
     }
 
     -- session-manager
-    use 'natecraddock/sessions.nvim'
+    use {
+        'natecraddock/sessions.nvim',
+        config = function()
+            require('sessions').setup()
+        end
+    }
 
     --buffer
     use {
@@ -246,6 +251,10 @@ return require('packer').startup(function(use)
                     })
                 end
             })
+            use {
+                'sakhnik/nvim-gdb',
+                run='./install.sh'
+            }
 
         end)
 

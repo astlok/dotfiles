@@ -83,18 +83,24 @@ cmp.setup({
         { name = 'nvim_lsp' },
         { name = 'luasnip' }, -- For luasnip users.
         { name = 'cmp_tabnine' },
-        { name = 'path' }
-    }, {
         { name = 'buffer' },
-    })
+        { name = 'path' }
+    }),
 })
 
-cmp.setup.cmdline('/', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-        { name = 'buffer' }
-    }
-})
+-- cmp.setup.cmdline('/', {
+--     mapping = cmp.mapping.preset.cmdline(),
+--     sources = {
+--         { name = 'buffer' }
+--     }
+-- })
+--
+-- cmp.setup.cmdline(':', {
+--     sources = cmp.config.sources({
+--         { name = 'path' }
+--     }, {
+--         { name = 'cmdline' }),
+-- })
 
 -- конфиг для ИИ автодополнений
 local tabnine = require('cmp_tabnine.config')

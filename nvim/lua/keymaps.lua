@@ -30,19 +30,33 @@ end
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
+--
+-- vim.cmd([[
+-- if (!exists('*SourceConfig'))
+--   function SourceConfig() abort
+--     for f in split(glob('~/.config/nvim/autoload/*'), '\n')
+--       exe 'source' f
+--     endfor
+--
+--     source $MYVIMRC
+--
+--     source ~/.vimrc
+--   endfunction
+-- endif
+--
+-- ]])
 
-vim.cmd([[
-if (!exists('*SourceConfig'))
-  function SourceConfig() abort
-    for f in split(glob('~/.config/nvim/autoload/*'), '\n')
-      exe 'source' f
-    endfor
+function _G.ReloadConfig()
+  for name,_ in pairs(package.loaded) do
+    if name:match('^plugins') and not name:match('nvim-tree') then
+      package.loaded[name] = nil
+    end
+  end
 
-    source $MYVIMRC
+  dofile(vim.env.MYVIMRC)
+  dofile('~/.vimrc')
+  vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
+end
 
-    source ~/.vimrc
-  endfunction
-endif
-
-]])
+vim.api.nvim_set_keymap("n", "<leader><CR>", "<cmd>lua ReloadConfig()<CR>", { noremap = true, silent = false })
 
