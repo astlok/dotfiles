@@ -1,5 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+PATH=$PATH:/home/centos/tools/llvm/bin
+PATH=$PATH:/home/centos/.cargo/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/centos/.oh-my-zsh"
@@ -116,7 +118,7 @@ export GOPRIVATE="gitlab.corp.mail.ru/*"
 #export GO111MODULE=on
 
 export GOPATH=$HOME/go
-export GOROOT=/usr/local/opt/go/libexec
+export GOROOT=/usr/local/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
