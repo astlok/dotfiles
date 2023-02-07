@@ -1,7 +1,7 @@
 require('telescope').setup {
     defaults = {
         initial_mode = "normal",
-        file_ignore_patterns = {"node_modules", "vendor", ".git"}
+        file_ignore_patterns = {"node_modules", "vendor", ".git", "lib", "third_party"}
     },
 	 -- pickers = {
 	 -- 	buffers = {
